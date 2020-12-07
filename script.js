@@ -148,4 +148,4 @@ function timeCount(){
 
 //Renders question on first open and sets timer
 renderRandomQuestion()
-timer(0, 16)
+timer(2, 0)
