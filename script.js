@@ -98,32 +98,32 @@ function swapWithNext(array, index){
     array.splice(index, 1)
     array.splice(index + 1, 0, storage)
 }
-// Function that returns true if an array is in reverse numerical order
-function isRevNumSorted (array){
+// Function that returns true if an array is in numerical order
+function isNumSorted (array){
     for (w=0; w < array.length; w++){
-        if(array[w] < array[w + 1]){
-        return false
-        }
+      if(array[w] > array[w + 1]){
+      return false
+      }
     }
-    return true
-}
-
-//Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into reverse numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
-function revNumSort(numberArray, stringArray, index){
-      //If the number array is in reverse numerical order, the function stops.
-    if(isRevNumSorted(numberArray)) {
+   return true
+  }
+  
+//Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
+function numSort(numberArray, stringArray, index){
+      //If the number array is in  numerical order, the function stops.
+    if(isNumSorted(numberArray)) {
         return
       }
       //If not, it checks if the number at the current index is less than its neighbor of index + 1
-      else if (numberArray[index] < numberArray[index+1]){
+      else if (numberArray[index] > numberArray[index+1]){
       swapWithNext(numberArray, index)
       swapWithNext(stringArray, index)
       //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
-      return revNumSort(numberArray, stringArray, 0)
+      return numSort(numberArray, stringArray, 0)
       }
       //If the number at the current index is greater than or equal to its neighbor, it advances through the array
       else{
-        return revNumSort(numberArray, stringArray, index + 1)
+        return numSort(numberArray, stringArray, index + 1)
       }
     }
 
@@ -131,8 +131,8 @@ function sortHighScores(){
     //Converts stored strings back into arrays
     initialsToSortArray = localStorage.getItem("storedPlayerInitialsArray").split(',')
     scoresToSortArray = localStorage.getItem("storedPlayerScoreArray").split(',')
-    // Arranges arrays into reverse numerical order by score
-    revNumSort(scoresToSortArray, initialsToSortArray, 0)
+    // Arranges arrays into numerical order by score
+    numSort(scoresToSortArray, initialsToSortArray, 0)
 }
 
 function renderScores(){
