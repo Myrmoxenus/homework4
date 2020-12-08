@@ -59,30 +59,39 @@ function shuffleAll(array) {
     }
 }
 
-
-// Prompts user to input initials, if user input is not length 3, alerts them of the mistake and calls itself again for correction, stores initials in local storage
+// Prompts user to input initials, if user input is not length 3, alerts them of the mistake and calls itself again for correction
 function storeInitials(){
 playerInitials = prompt("Enter initials!")
     if (playerInitials.length !== 3) {
       alert("Password length must be between 3 characters in length.")
       return storeInitials()}
      playerInitialsArray = [playerInitials]
+     //Pushes stored player initials into playerInitialsArray
      playerInitialsArray.push(localStorage.getItem("storedPlayerInitialsArray"))
+     //Stores the new array
      localStorage.setItem("storedPlayerInitialsArray", playerInitialsArray)
 }
 
-
-//Terminates quiz and sends user to scorepage
-function terminate(){
+function storeScore(){
     //Stores user score, prompts user to supply name
     playerScoreArray = [score]
+    //Pushes stored player score into playerScoreArray
     playerScoreArray.push(localStorage.getItem("storedPlayerScoreArray"))
+    //Stores the new score array
     localStorage.setItem("storedPlayerScoreArray", playerScoreArray)
-    storeInitials()
-    //Redirects to scorecard page
-    window.location.href = "scorecard.html"    
 }
-/* I want to store user score and initials as an array and then sort them with the following: 
+
+//Stores user initials and score and then terminates the quiz by redirecting user to scorepage
+function terminate(){
+    //Runs storeInitials
+    storeInitials()
+    //Runs storeScore
+    storeScore()
+    //Redirects to scorecard page
+    window.location.href = "scorecard.html"   
+}
+
+/*After I figure out how to convert the strings in localStorage back into arrays, I want to use this to sort them
 
 function swapWithNext(array, index){
     var storage = array[index]
