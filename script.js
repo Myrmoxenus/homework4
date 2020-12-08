@@ -59,10 +59,22 @@ function shuffleAll(array) {
     }
 }
 
+
+// Prompts user to input initials, if user input is not length 3, alerts them of the mistake and calls itself again for correction, stores initials in local storage
+function storeInitials(){
+playerInitials = prompt("Enter initials!")
+    if (playerInitials.length !== 3) {
+      alert("Password length must be input as an integer and must be between 3 characters in length.")
+      return storeInitials()}
+      localStorage.setItem("playerInitials", playerInitials)
+}
+
+
 //Terminates quiz and sends user to scorepage
 function terminate(){
     //Stores user score, prompts user to supply name
-    localStorage.setItem("playerScore"+localStorage.length, score)
+    localStorage.setItem("playerScore", score)
+    storeInitials()
     //Redirects to scorecard page
     window.location.href = "scorecard.html"    
 }
@@ -146,6 +158,6 @@ function timeCount(){
 }
 
 
-//Renders question on first open and sets timer
+//Renders a random question on start up and sets timer to 2 minutes.
 renderRandomQuestion()
-timer(2, 0)
+timer (2, 0)

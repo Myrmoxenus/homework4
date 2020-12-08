@@ -16,8 +16,7 @@ p{
     text-align: left;
   }
 
-/* card */
-
+/* Card Borrowed from Homework 3 */
 .card {
   background-color: white;
   border-radius: 5px;
@@ -39,7 +38,8 @@ p{
   height: 2px;
 }
 
-/* submit button */
+/* Submit Button and Radio Buttons Borrowed from WC3 Schools */
+/* Submit Button*/
 .button {
     background-color: #4e4c6d;
     border: none;
@@ -56,7 +56,7 @@ p{
     font-family: "Times New Roman", Times, serif;
   }
 
-/* The container */
+/* The Container */
 .container {
     display: block;
     position: relative;
