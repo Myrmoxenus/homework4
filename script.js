@@ -116,11 +116,11 @@ submitButton.addEventListener("click", function(){
 }
 )
 
-//Displays how much time user has left on timer
+//Sets the timer from the document to a variable for easier access, sets minutes remaining and seconds remaining as global variables
 timeLeft = document.getElementById("timer")
 var minutesRemaining = 0
 var secondsRemaining = 0
-timeLeft.innerHTML = "Time Remaining: " + minutesRemaining + " min " + secondsRemaining + " sec"
+
 
 //Timer takes minutes and seconds as arguments
 function timer(minutes, seconds){
