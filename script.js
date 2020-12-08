@@ -78,6 +78,38 @@ function terminate(){
     //Redirects to scorecard page
     window.location.href = "scorecard.html"    
 }
+/*
+function swapWithNext(array, index){
+    var storage = array[index]
+    array.splice(index, 1)
+    array.splice(index + 1, 0, storage)
+    }
+    
+    function isRevNumSorted (array){
+      for (w=0; w < array.length; w++){
+        if(array[w] < array[w + 1]){
+        return false
+        }
+      }
+     return true
+    }
+    
+    function revNumSort(numberArray, stringArray, index){
+      if(isRevNumSorted(numberArray)) {
+        console.log(numberArray)
+        console.log(stringArray)
+        return
+      }
+      else if (numberArray[index] < numberArray[index+1]){
+      swapWithNext(numberArray, index)
+      swapWithNext(stringArray, index)
+      return revNumSort(numberArray, stringArray, 0)
+      }
+      else{
+        return revNumSort(numberArray, stringArray, index + 1)
+      }
+    }
+*/    
 
 //Renders new randomly selected question with shuffled answers to screen
 function renderRandomQuestion(){
