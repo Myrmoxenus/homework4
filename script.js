@@ -206,4 +206,4 @@ function timeCount(){
 
 //Renders a random question on start up and sets timer to 2 minutes.
 renderRandomQuestion()
-timer (0, 5)
+timer (2, 0)
