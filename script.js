@@ -88,42 +88,69 @@ function terminate(){
     //Runs storeScore
     storeScore()
     //Redirects to scorecard page
-    window.location.href = "scorecard.html"   
+    window.location.href = "scorecard.html" 
 }
 
-/*After I figure out how to convert the strings in localStorage back into arrays, I want to use this to sort them
 
+// Funtion that swaps a member of an array at an index with its neighbor at that index + 1 
 function swapWithNext(array, index){
     var storage = array[index]
     array.splice(index, 1)
     array.splice(index + 1, 0, storage)
-    }
-    
-    function isRevNumSorted (array){
-      for (w=0; w < array.length; w++){
+}
+// Function that returns true if an array is in reverse numerical order
+function isRevNumSorted (array){
+    for (w=0; w < array.length; w++){
         if(array[w] < array[w + 1]){
         return false
         }
-      }
-     return true
     }
-    
-    function revNumSort(numberArray, stringArray, index){
-      if(isRevNumSorted(numberArray)) {
-        console.log(numberArray)
-        console.log(stringArray)
+    return true
+}
+
+//Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into reverse numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
+function revNumSort(numberArray, stringArray, index){
+      //If the number array is in reverse numerical order, the function stops.
+    if(isRevNumSorted(numberArray)) {
         return
       }
+      //If not, it checks if the number at the current index is less than its neighbor of index + 1
       else if (numberArray[index] < numberArray[index+1]){
       swapWithNext(numberArray, index)
       swapWithNext(stringArray, index)
+      //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
       return revNumSort(numberArray, stringArray, 0)
       }
+      //If the number at the current index is greater than or equal to its neighbor, it advances through the array
       else{
         return revNumSort(numberArray, stringArray, index + 1)
       }
     }
-*/    
+
+function sortHighScores(){
+    //Converts stored strings back into arrays
+    initialsToSortArray = localStorage.getItem("storedPlayerInitialsArray").split(',')
+    scoresToSortArray = localStorage.getItem("storedPlayerScoreArray").split(',')
+    // Arranges arrays into reverse numerical order by score
+    revNumSort(scoresToSortArray, initialsToSortArray, 0)
+}
+
+function renderScores(){
+    //Runs sortHighScores()
+    sortHighScores()
+    //Grabs table element from Scorecard
+    var scoreTable = document.getElementById("scoreTable");
+    for (i=0;i<initialsToSortArray.length;i++) {  
+    //Adds row to table
+    var row = scoreTable.insertRow(1)
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var initialsCell = row.insertCell(0);
+    var scoreCell = row.insertCell(1);
+    // Add some text to the new cells:
+    initialsCell.innerHTML = initialsToSortArray[i]
+    scoreCell.innerHTML = scoresToSortArray[i]
+}
+}   
 
 //Renders new randomly selected question with shuffled answers to screen
 function renderRandomQuestion(){
