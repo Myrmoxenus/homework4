@@ -78,7 +78,8 @@ function terminate(){
     //Redirects to scorecard page
     window.location.href = "scorecard.html"    
 }
-/*
+/* I want to store user score and initials as an array and then sort them with the following: 
+
 function swapWithNext(array, index){
     var storage = array[index]
     array.splice(index, 1)
