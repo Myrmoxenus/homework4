@@ -183,7 +183,7 @@ function swapWithNext(array, index){
 // Function that returns true if an array is in numerical order
 function isNumSorted (array){
     for (w=0; w < array.length; w++){
-      if(array[w] > array[w + 1]){
+      if(parseInt(array[w]) > parseInt(array[w + 1])){
       return false
       }
     }
@@ -199,7 +199,8 @@ function numSort(numberArray, stringArray, index){
       return
     }
     //If not, it checks if the number at the current index is less than its neighbor of index + 1
-    else if (numberArray[index] > numberArray[index+1]){
+    else if (parseInt(numberArray[index]) > parseInt(numberArray[index+1])){
+      console.log(numberArray)
     swapWithNext(numberArray, index)
     swapWithNext(stringArray, index)
     //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
