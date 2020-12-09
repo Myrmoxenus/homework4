@@ -91,67 +91,6 @@ function terminate(){
     window.location.href = "scorecard.html" 
 }
 
-
-// Funtion that swaps a member of an array at an index with its neighbor at that index + 1 
-function swapWithNext(array, index){
-    var storage = array[index]
-    array.splice(index, 1)
-    array.splice(index + 1, 0, storage)
-}
-// Function that returns true if an array is in numerical order
-function isNumSorted (array){
-    for (w=0; w < array.length; w++){
-      if(array[w] > array[w + 1]){
-      return false
-      }
-    }
-   return true
-  }
-  
-//Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
-function numSort(numberArray, stringArray, index){
-      //If the number array is in  numerical order, the function stops.
-    if(isNumSorted(numberArray)) {
-        return
-      }
-      //If not, it checks if the number at the current index is less than its neighbor of index + 1
-      else if (numberArray[index] > numberArray[index+1]){
-      swapWithNext(numberArray, index)
-      swapWithNext(stringArray, index)
-      //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
-      return numSort(numberArray, stringArray, 0)
-      }
-      //If the number at the current index is greater than or equal to its neighbor, it advances through the array
-      else{
-        return numSort(numberArray, stringArray, index + 1)
-      }
-    }
-
-function sortHighScores(){
-    //Converts stored strings back into arrays
-    initialsToSortArray = localStorage.getItem("storedPlayerInitialsArray").split(',')
-    scoresToSortArray = localStorage.getItem("storedPlayerScoreArray").split(',')
-    // Arranges arrays into numerical order by score
-    numSort(scoresToSortArray, initialsToSortArray, 0)
-}
-
-function renderScores(){
-    //Runs sortHighScores()
-    sortHighScores()
-    //Grabs table element from Scorecard
-    var scoreTable = document.getElementById("scoreTable");
-    for (i=0;i<initialsToSortArray.length;i++) {  
-    //Adds row to table
-    var row = scoreTable.insertRow(1)
-    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var initialsCell = row.insertCell(0);
-    var scoreCell = row.insertCell(1);
-    // Add some text to the new cells:
-    initialsCell.innerHTML = initialsToSortArray[i]
-    scoreCell.innerHTML = scoresToSortArray[i]
-}
-}   
-
 //Renders new randomly selected question with shuffled answers to screen
 function renderRandomQuestion(){
     // Resets shuffled array
@@ -230,7 +169,68 @@ function timeCount(){
   timeLeft.innerHTML = "Time Remaining: " + minutesRemaining + " min " + secondsRemaining + " sec"
 }
 
-
+//RENDERING THE SCORECARD//
+// Function that swaps a member of an array at an index with its neighbor at that index + 1 
+function swapWithNext(array, index){
+    var storage = array[index]
+    array.splice(index, 1)
+    array.splice(index + 1, 0, storage)
+}
+// Function that returns true if an array is in numerical order
+function isNumSorted (array){
+    for (w=0; w < array.length; w++){
+      if(array[w] > array[w + 1]){
+      return false
+      }
+    }
+   return true
+  }
+  
 //Renders a random question on start up and sets timer to 2 minutes.
 renderRandomQuestion()
 timer (2, 0)
+
+
+//Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
+function numSort(numberArray, stringArray, index){
+    //If the number array is in  numerical order, the function stops.
+  if(isNumSorted(numberArray)) {
+      return
+    }
+    //If not, it checks if the number at the current index is less than its neighbor of index + 1
+    else if (numberArray[index] > numberArray[index+1]){
+    swapWithNext(numberArray, index)
+    swapWithNext(stringArray, index)
+    //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
+    return numSort(numberArray, stringArray, 0)
+    }
+    //If the number at the current index is greater than or equal to its neighbor, it advances through the array
+    else{
+      return numSort(numberArray, stringArray, index + 1)
+    }
+  }
+
+function sortHighScores(){
+  //Converts stored strings back into arrays
+  initialsToSortArray = localStorage.getItem("storedPlayerInitialsArray").split(',')
+  scoresToSortArray = localStorage.getItem("storedPlayerScoreArray").split(',')
+  // Arranges arrays into numerical order by score
+  numSort(scoresToSortArray, initialsToSortArray, 0)
+}
+
+function renderScores(){
+  //Runs sortHighScores()
+  sortHighScores()
+  //Grabs table element from Scorecard
+  var scoreTable = document.getElementById("scoreTable");
+  for (i=0;i<initialsToSortArray.length;i++) {  
+  //Adds row to table
+  var row = scoreTable.insertRow(1)
+  // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+  var initialsCell = row.insertCell(0);
+  var scoreCell = row.insertCell(1);
+  // Add some text to the new cells:
+  initialsCell.innerHTML = initialsToSortArray[i]
+  scoreCell.innerHTML = scoresToSortArray[i]
+  }
+}   
