@@ -5,6 +5,10 @@ body {
 p{
   font-size: 1.8vw;
 }
+#explainText{
+  text-align: center;
+}
+
 .playerStats{
   font-size: 1.8vw;
   text-align: center;
@@ -32,6 +36,14 @@ p{
   color: #4e4c6d;
   font-weight: bold;
 }
+
+#quizHeader {  
+  font-size: 3vw;
+  text-align: center;
+  color: #4e4c6d;
+  font-weight: bold;
+}
+
 
 
 /* Card Borrowed from Homework 3 */
@@ -63,8 +75,8 @@ p{
     border: none;
     position: relative;
     margin-top: 2%;
-    margin-left: 41%;
-    margin-right: 41%;
+    margin-left: 38%;
+    margin-right: auto;
     color: white;
     padding: 3% 9%;
     text-align: center;
@@ -73,6 +85,14 @@ p{
     font-size: 1.8vw;
     font-family: "Times New Roman", Times, serif;
   }
+
+#startButton {
+  margin-left: 33%;
+}
+
+#retryButton {
+  margin-left: 33%;
+}
 
 /* The Container */
 .container {

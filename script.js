@@ -200,7 +200,6 @@ function numSort(numberArray, stringArray, index){
     }
     //If not, it checks if the number at the current index is less than its neighbor of index + 1
     else if (parseInt(numberArray[index]) > parseInt(numberArray[index+1])){
-      console.log(numberArray)
     swapWithNext(numberArray, index)
     swapWithNext(stringArray, index)
     //If so, it swaps their positions and passes the new arrays back to itself and starts over from index 0
