@@ -126,6 +126,10 @@ displayedScore = document.getElementById("playerScore")
 score = 0
 playerScore.innerHTML = "Player Score: " + score
 
+//Sets the timer from the document to a variable for easier access and secondsRemaining as a global variable
+timeLeft = document.getElementById("timer")
+var secondsRemaining = 0
+
 
 //Event listener for when the user has clicked the submit button
 var submitButton = document.getElementById("submitButton")
@@ -134,44 +138,40 @@ submitButton.addEventListener("click", function(){
    if (userCorrect()){
     score++
    }
+   else{ 
+       secondsRemaining = secondsRemaining - 10
+   }
    //Renders a new question and user's updated score to the document
    playerScore.innerHTML = "Player Score: " + score
    renderRandomQuestion()
 }
 )
 
-//Sets the timer from the document to a variable for easier access, sets minutes remaining and seconds remaining as global variables
-timeLeft = document.getElementById("timer")
-var minutesRemaining = 0
-var secondsRemaining = 0
 
-
-//Timer takes minutes and seconds as arguments
-function timer(minutes, seconds){
-minutesRemaining = minutes
-secondsRemaining = seconds
-setInterval(timeCount, 1000)}
-
-//Second counter, draws from minutes when seconds reaches 0
+//Second counter, displays minutes as seconds/60 rounded down, displays seconds as secondsR
 function timeCount(){
 
     //Terminates and sends user to scorecard when clock reaches 0 minutes and 0 seconds
-    if(secondsRemaining == 0 && minutesRemaining == 0){
+    if(secondsRemaining == 0){
     terminate()
     }
 
-    if(secondsRemaining == 0){
-    secondsRemaining = 60
-    minutesRemaining = minutesRemaining - 1
-    }
-
   secondsRemaining = secondsRemaining - 1
-  timeLeft.innerHTML = "Time Remaining: " + minutesRemaining + " min " + secondsRemaining + " sec"
+  minutesDisplay = Math.floor(secondsRemaining/60)
+  secondsDisplay = secondsRemaining - minutesDisplay*60
+  timeLeft.innerHTML = "Time Remaining: " + minutesDisplay + " min " + secondsDisplay+ " sec"
 }
 
+//Starts the timer with the amount of seconds you pass it
+function startTimer(seconds){
+  secondsRemaining = seconds
+  setInterval(timeCount, 1000)
+  }
+
+  
 //Renders a random question on start up and sets timer to 2 minutes.
 renderRandomQuestion()
-timer (2, 0)
+startTimer (120)
 
 //RENDERING THE SCORECARD//
 // Function that swaps a member of an array at an index with its neighbor at that index + 1 
