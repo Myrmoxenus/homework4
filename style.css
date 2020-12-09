@@ -1,18 +1,18 @@
 body {
   background-color:#dedece;
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 p{
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 .playerStats{
-  font-size: 2vw;
+  font-size: 1.8vw;
   text-align: center;
   margin-left: 8%;
 }
 
 #questionText {
-    font-size: 2vw;
+    font-size: 1.8vw;
     text-align: left;
   }
 
@@ -43,7 +43,7 @@ p{
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 1%;
   max-width: 800px;
   padding: 30px 40px;
 }
@@ -62,7 +62,7 @@ p{
     background-color: #4e4c6d;
     border: none;
     position: relative;
-    margin-top: 10%;
+    margin-top: 2%;
     margin-left: 41%;
     margin-right: 41%;
     color: white;
@@ -70,7 +70,7 @@ p{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 2vw;
+    font-size: 1.8vw;
     font-family: "Times New Roman", Times, serif;
   }
 
@@ -79,9 +79,9 @@ p{
     display: block;
     position: relative;
     padding-left: 35px;
-    margin: 4%;
+    margin: 2%;
     cursor: pointer;
-    font-size: 2vw;
+    font-size: 1.8vw;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
