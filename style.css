@@ -1,22 +1,22 @@
 body {
   background-color:#dedece;
-  font-size: 1.8vw;
+  font-size: 1.5vw;
 }
 p{
-  font-size: 1.8vw;
+  font-size: 1.5vw;
 }
 #explainText{
   text-align: center;
 }
 
 .playerStats{
-  font-size: 1.8vw;
+  font-size: 1.5vw;
   text-align: center;
   margin-left: 8%;
 }
 
 #questionText {
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     text-align: left;
   }
 
@@ -82,7 +82,7 @@ p{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     font-family: "Times New Roman", Times, serif;
   }
 
@@ -101,7 +101,7 @@ p{
     padding-left: 35px;
     margin: 2%;
     cursor: pointer;
-    font-size: 1.8vw;
+    font-size: 1.5vw;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
