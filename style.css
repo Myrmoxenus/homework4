@@ -16,7 +16,8 @@ p{
     text-align: left;
   }
 
-#scoreTable {  
+#scoreTable { 
+  color: #4e4c6d; 
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -28,7 +29,7 @@ p{
 #highscores {  
   font-size: 3vw;
   text-align: center;
-  color: #4e4c6d
+  color: #4e4c6d;
   font-weight: bold;
 }
 
