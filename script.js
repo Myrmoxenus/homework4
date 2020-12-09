@@ -169,6 +169,10 @@ function timeCount(){
   timeLeft.innerHTML = "Time Remaining: " + minutesRemaining + " min " + secondsRemaining + " sec"
 }
 
+//Renders a random question on start up and sets timer to 2 minutes.
+renderRandomQuestion()
+timer (2, 0)
+
 //RENDERING THE SCORECARD//
 // Function that swaps a member of an array at an index with its neighbor at that index + 1 
 function swapWithNext(array, index){
@@ -186,9 +190,6 @@ function isNumSorted (array){
    return true
   }
   
-//Renders a random question on start up and sets timer to 2 minutes.
-renderRandomQuestion()
-timer (2, 0)
 
 
 //Function that takes two arrays, one with numbers and one with strings that are assosciated with one another in order. It then rearranges the number array into numerical order, making the same changes to the corresponding string array, keeping the values in the arrays assosciated with one another.
